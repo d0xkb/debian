@@ -1,8 +1,7 @@
 #!/bin/bash
 
 #initial root check
-if [ "$EUID" -ne "0" ]
-then
+if [ "$EUID" -ne 0 ]; then
 	echo "Run this script as root." 1>&2
 	exit 1
 fi
@@ -35,6 +34,11 @@ bash $DIR/scripts/iptables.sh
 
 #unbound setup
 bash $DIR/scripts/unbound.sh
+
+#change from graphical.target (default) to multi-user.target
+if [[ $(systemctl get-default) != multi-user.target ]]; then
+  systemctl set-default multi-user.target
+fi
 
 #cleaning via apt
 apt-get autoclean
