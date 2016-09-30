@@ -1,7 +1,9 @@
 #!/bin/bash
 
-#install unbound
-apt-get -y install unbound
+#install unbound if necessary
+if [[ $(which unbound) != /usr/sbin/unbound ]]; then
+   apt-get -y install unbound
+fi
 
 #stop tor right after installation and enable after reboot
 systemctl stop unbound.service && sleep 5
@@ -13,8 +15,11 @@ unbound -c /etc/unbound/unbound.conf
 #root trust anchor for DNSSEC validation key setup
 unbound-anchor -a "/var/lib/unbound/root.key"
 
+#backup config first
+mv /etc/unbound/unbound.conf /etc/unbound/unbound.conf.bak
+
 #create unbound config
-cat >> /etc/unbound/unbound.conf <<EOF
+cat > /etc/unbound/unbound.conf <<EOF
 server:
 interface: 127.0.0.1
 access-control: 127.0.0.1 allow

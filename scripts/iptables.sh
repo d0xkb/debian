@@ -44,9 +44,6 @@ iptables -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 9001 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 9030 -j ACCEPT
 
-#enable NTP server
-iptables -A INPUT -p udp -m udp --dport 123 -j ACCEPT
-
 #block incomming ICMP pings
 #destination-unreachable(3), source-quench(4) and time-exceeded(11) are required
 iptables -A INPUT -p icmp -m icmp --icmp-type 3 -j ACCEPT

@@ -1,6 +1,6 @@
 Debian 8 post-installation script
 =================================
-this is post-installation script for setting up Debian 8 hosted at OVH. General purpose of the script is to setup tor relay, local DNS, firewall and public NTP server.
+this is post-installation script for setting up Debian 8 hosted at OVH. General purpose of the script is to setup tor relay, local DNS, firewall and NTP client.
 
 Usage
 -----
