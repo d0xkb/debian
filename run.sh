@@ -1,6 +1,6 @@
 #!/bin/bash
 
-err=exit 1
+err="exit 1"
 
 #initial root check
 if [ "$EUID" -ne 0 ]; then
