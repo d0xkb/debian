@@ -1,6 +1,7 @@
+![logo] (http://i.imgur.com/dtVqMm3.png)
+
 Debian setup script for Tor relay
 ===============================================
-this is post-installation script for setting up Debian as a Tor relay. 
 
 Usage
 -----
