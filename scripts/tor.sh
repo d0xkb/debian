@@ -3,8 +3,7 @@
 
 #add tor repo
 cat > /etc/apt/sources.list.d/tor.list <<EOF
-deb http://deb.torproject.org/torproject.org $(lsb_release -cs) main
-deb-src http://deb.torproject.org/torproject.org $(lsb_release -cs) main
+deb https://deb.torproject.org/torproject.org $(lsb_release -cs) main
 EOF
 
 #add gpg key
