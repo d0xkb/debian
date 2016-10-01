@@ -3,8 +3,8 @@
 
 #add tor repo
 cat > /etc/apt/sources.list.d/tor.list <<EOF
-deb http://deb.torproject.org/torproject.org jessie main
-deb-src http://deb.torproject.org/torproject.org jessie main
+deb http://deb.torproject.org/torproject.org $(lsb_release -cs) main
+deb-src http://deb.torproject.org/torproject.org $(lsb_release -cs) main
 EOF
 
 #add gpg key
@@ -28,7 +28,7 @@ ORPort 9001
 DirPort 9030
 RelayBandwidthRate 2048 KBytes
 RelayBandwidthBurst 2048 KBytes
-Nickname d0xkb
-ContactInfo d0xkb <d0xkb@protonmail.ch>
+#Nickname ididnteditheconfig
+#ContactInfo 0xFFFFFFFF Random Person <nobody AT example dot com>
 ExitPolicy reject *:*
 EOF
