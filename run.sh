@@ -3,7 +3,7 @@
 #variables
 ERR="exit 1"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PACKAGES="vim curl htop iftop iptraf tcpdump iotop ccze unzip"
+PACKAGES="vim curl htop iftop iptraf tcpdump iotop ccze unzip apt-transport-https"
 
 #initial root check
 if [ "$EUID" -ne 0 ]; then
