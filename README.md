@@ -1,8 +1,5 @@
 ![logo] (http://i.imgur.com/dtVqMm3.png)
 
-Debian setup script for Tor relay
-===============================================
-
 Usage
 -----
 ````
