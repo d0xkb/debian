@@ -1,13 +1,13 @@
-Debian 8 post-installation script
-=================================
-this is post-installation script for setting up Debian 8 hosted at OVH. General purpose of the script is to setup tor relay, local DNS, firewall and NTP client.
+Debian setup script for Tor relay
+===============================================
+this is post-installation script for setting up Debian as a Tor relay. 
 
 Usage
 -----
 ````
 apt-get -y install git
 git clone https://github.com/d0xkb/debian.git
-cd debian && chmod +x run.sh
+cd debian
 ./run.sh
 ````
 
