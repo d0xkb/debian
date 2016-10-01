@@ -20,8 +20,7 @@ mv /etc/chrony/chrony.conf /etc/chrony/chrony.conf.bak
 #create chrony config
 cat > /etc/chrony/chrony.conf <<EOF
 # NTP servers list.
-server ntp.neel.ch prefer iburst
-server ntp-p1.obspm.fr iburst
+server ntp-p1.obspm.fr prefer iburst
 server chronos.cru.fr iburst
 server canon.inria.fr iburst
 
