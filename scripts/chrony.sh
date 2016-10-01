@@ -30,8 +30,11 @@ driftfile /var/lib/chrony/drift
 # Enable kernel RTC synchronization.
 rtcsync
 
-# Allow step on any clock update if offset is larger than 1 second.
-makestep 1 -1
+# Keep RTC to use UTC.
+rtconutc
+
+# If offset is larger than 0.1 second, adjust time in first 10 updates.
+makestep 0.1 10
 
 # Deny NTP client requests.
 deny all
@@ -40,9 +43,6 @@ deny all
 bindcmdaddress 127.0.0.1
 bindcmdaddress ::1
 
-# Disable logging of client accesses.
-noclientlog
-
-# Send a message to syslog if a clock adjustment is larger than 0.1 seconds.
+# Send a message to syslog if a clock adjustment is larger than 0.1 second.
 logchange 0.1
 EOF
