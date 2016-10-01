@@ -1,12 +1,14 @@
 #!/bin/bash
 
-#error return
-err="exit 1"
+#variables
+ERR="exit 1"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PACKAGES="vim curl htop iftop iptraf tcpdump iotop ccze unzip"
 
 #initial root check
 if [ "$EUID" -ne 0 ]; then
 	echo "Run this script as root." 1>&2
-	$err
+	$ERR
 fi
 
 #locale setup
@@ -19,30 +21,24 @@ export LC_TYPE=en_US.UTF-8
 apt-get update
 apt-get -y dist-upgrade
 
-#packages
-packages="vim curl htop iftop iptraf tcpdump iotop ccze unzip"
-
 #additional packages installation
-apt-get -y install $packages
-
-#get current directory
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+apt-get -y install $PACKAGES
 
 #.bashrc setup
-cp -p $DIR/scripts/.bashrc ~/.bashrc || $err
+cp -p $DIR/scripts/.bashrc ~/.bashrc || $ERR
 source ~/.bashrc
 
 #chrony setup
-bash $DIR/scripts/chrony.sh || $err
+bash $DIR/scripts/chrony.sh || $ERR
 
 #tor setup
-bash $DIR/scripts/tor.sh || $err
+bash $DIR/scripts/tor.sh || $ERR
 
 #iptables setup
-bash $DIR/scripts/iptables.sh || $err
+bash $DIR/scripts/iptables.sh || $ERR
 
 #unbound setup
-bash $DIR/scripts/unbound.sh || $err
+bash $DIR/scripts/unbound.sh || $ERR
 
 #change from graphical.target (default) to multi-user.target
 if [[ $(systemctl get-default) != multi-user.target ]]; then
