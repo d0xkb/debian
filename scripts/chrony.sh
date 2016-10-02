@@ -20,9 +20,10 @@ mv /etc/chrony/chrony.conf /etc/chrony/chrony.conf.bak
 #create chrony config
 cat > /etc/chrony/chrony.conf <<EOF
 # NTP servers list.
-server ntp-p1.obspm.fr prefer iburst
-server chronos.cru.fr iburst
-server canon.inria.fr iburst
+server 0.europe.pool.ntp.org iburst
+server 1.europe.pool.ntp.org iburst
+server 2.europe.pool.ntp.org iburst
+server 3.europe.pool.ntp.org iburst
 
 # Record the rate at which the system clock gains/losses time.
 driftfile /var/lib/chrony/drift
