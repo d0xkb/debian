@@ -56,12 +56,10 @@ apt-get -y autoremove
 [ -e "/var/log/bootstrap.log" ] && rm -f /var/log/bootstrap.log
 
 #remove unnecessary users
-userdel -r uucp 2>/dev/null
 userdel -r www-data 2>/dev/null
 userdel -r irc 2>/dev/null
 userdel -r games 2>/dev/null
 userdel -r news 2>/dev/null
-userdel -r lp 2>/dev/null
 userdel -r backup 2>/dev/null
 userdel -r proxy 2>/dev/null
 userdel -r gnats 2>/dev/null
