@@ -1,4 +1,4 @@
-![logo] (http://i.imgur.com/dtVqMm3.png)
+![logo] (http://i.imgur.com/oL1rROS.png)
 
 Usage
 -----
