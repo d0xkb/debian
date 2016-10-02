@@ -1,4 +1,7 @@
-![logo] (http://i.imgur.com/oL1rROS.png)
+Debian setup script for Tor relay
+=================================
+
+this is post-installation script for setting up Debian 8 (Jessie) hosted at OVH. General purpose of the script is to setup Tor non-exit relay, local DNS, firewall and NTP client.
 
 Usage
 -----
