@@ -55,19 +55,4 @@ apt-get -y autoremove
 [ -e "/var/log/alternatives.log" ] && rm -f /var/log/alternatives.log
 [ -e "/var/log/bootstrap.log" ] && rm -f /var/log/bootstrap.log
 
-#remove unnecessary users
-userdel -r www-data 2>/dev/null
-userdel -r irc 2>/dev/null
-userdel -r games 2>/dev/null
-userdel -r news 2>/dev/null
-userdel -r backup 2>/dev/null
-userdel -r proxy 2>/dev/null
-userdel -r gnats 2>/dev/null
-userdel -r list 2>/dev/null
-userdel -r systemd-resolve 2>/dev/null
-userdel -r debian 2>/dev/null
-
-#home for nobody user
-mkdir -p /nonexistent
-
 tput bold; echo "done, please reboot"; tput sgr0
