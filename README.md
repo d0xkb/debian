@@ -8,7 +8,7 @@ Usage
 ````
 apt-get -y install git
 git clone https://github.com/d0xkb/debian.git
-cd debian
+cd debian && chmod +x run.sh
 ./run.sh
 ````
 

@@ -1,7 +1,10 @@
 #!/bin/bash
 
-#variables
-ERR="exit 1"
+#exit immediately if a command/pipeline exits with a non-zero status
+set -e
+set -o pipefail
+
+#set variables
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PACKAGES="vim curl htop iftop iptraf tcpdump iotop ccze unzip apt-transport-https"
 
@@ -25,20 +28,20 @@ apt-get -y dist-upgrade
 apt-get -y install $PACKAGES
 
 #.bashrc setup
-cp -p $DIR/scripts/.bashrc ~/.bashrc || $ERR
+cp -p $DIR/scripts/.bashrc ~/.bashrc
 source ~/.bashrc
 
 #chrony setup
-bash $DIR/scripts/chrony.sh || $ERR
+bash $DIR/scripts/chrony.sh
 
 #tor setup
-bash $DIR/scripts/tor.sh || $ERR
+bash $DIR/scripts/tor.sh
 
 #iptables setup
-bash $DIR/scripts/iptables.sh || $ERR
+bash $DIR/scripts/iptables.sh
 
 #unbound setup
-bash $DIR/scripts/unbound.sh || $ERR
+bash $DIR/scripts/unbound.sh
 
 #change from graphical.target (default) to multi-user.target
 if [[ $(systemctl get-default) != multi-user.target ]]; then
