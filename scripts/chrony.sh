@@ -6,9 +6,15 @@ if [[ $(which chronyd) != /usr/sbin/chronyd ]]; then
    apt-get -y install chrony
 fi
 
-#disable systemd ntp and set FR timezone
+#disable systemd ntp and standartize on UTC timezone
 timedatectl set-ntp false
-timedatectl set-timezone Europe/Paris
+timedatectl set-timezone UTC
+
+#check link to localtime
+if [[ $(readlink -f /etc/localtime) != /usr/share/zoneinfo/UTC ]]; then
+  rm -f /etc/localtime
+  ln -s /usr/share/zoneinfo/UTC /etc/localtime
+fi
 
 #stop chrony right after installation and enable after reboot
 systemctl stop chrony.service && sleep 5
@@ -20,10 +26,10 @@ mv /etc/chrony/chrony.conf /etc/chrony/chrony.conf.bak
 #create chrony config
 cat > /etc/chrony/chrony.conf <<EOF
 # NTP servers list.
-server 0.europe.pool.ntp.org iburst
-server 1.europe.pool.ntp.org iburst
-server 2.europe.pool.ntp.org iburst
-server 3.europe.pool.ntp.org iburst
+server 0.pool.ntp.org iburst
+server 1.pool.ntp.org iburst
+server 2.pool.ntp.org iburst
+server 3.pool.ntp.org iburst
 
 # Record the rate at which the system clock gains/losses time.
 driftfile /var/lib/chrony/drift
