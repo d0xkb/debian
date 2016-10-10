@@ -1,29 +1,29 @@
 #!/bin/bash
-#documentation: https://chrony.tuxfamily.org/manual.html
+# documentation: https://chrony.tuxfamily.org/manual.html
 
-#install chrony if necessary
+# install chrony if necessary
 if [[ $(which chronyd) != /usr/sbin/chronyd ]]; then
    apt-get -y install chrony
 fi
 
-#disable systemd ntp and standartize on UTC timezone
+# disable systemd ntp and standartize on UTC timezone
 timedatectl set-ntp false
 timedatectl set-timezone UTC
 
-#check link to localtime
+# check link to localtime
 if [[ $(readlink -f /etc/localtime) != /usr/share/zoneinfo/UTC ]]; then
   rm -f /etc/localtime
   ln -s /usr/share/zoneinfo/UTC /etc/localtime
 fi
 
-#stop chrony right after installation and enable after reboot
+# stop chrony right after installation and enable after reboot
 systemctl stop chrony.service && sleep 5
 systemctl enable chrony.service
 
-#backup config first
+# backup config first
 mv /etc/chrony/chrony.conf /etc/chrony/chrony.conf.bak
 
-#create chrony config
+# create chrony config
 cat > /etc/chrony/chrony.conf <<EOF
 # NTP servers list.
 server 0.pool.ntp.org iburst

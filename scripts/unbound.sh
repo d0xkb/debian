@@ -1,24 +1,24 @@
 #!/bin/bash
 
-#install unbound if necessary
+# install unbound if necessary
 if [[ $(which unbound) != /usr/sbin/unbound ]]; then
    apt-get -y install unbound
 fi
 
-#stop tor right after installation and enable after reboot
+# stop tor right after installation and enable after reboot
 systemctl stop unbound.service && sleep 5
 systemctl enable unbound.service
 
-#config path set
+# config path set
 unbound -c /etc/unbound/unbound.conf
 
-#root trust anchor for DNSSEC validation key setup
+# root trust anchor for DNSSEC validation key setup
 unbound-anchor -a "/var/lib/unbound/root.key"
 
-#backup config first
+# backup config first
 mv /etc/unbound/unbound.conf /etc/unbound/unbound.conf.bak
 
-#create unbound config
+# create unbound config
 cat > /etc/unbound/unbound.conf <<EOF
 server:
 interface: 127.0.0.1
@@ -32,11 +32,11 @@ hide-identity: yes
 hide-version: yes
 EOF
 
-#set to use local DNS resolver
-chattr -i /etc/resolv.conf #allow the modification of the file
-sed -i 's|nameserver|#nameserver|' /etc/resolv.conf #disable previous DNS servers
-echo "nameserver 127.0.0.1" >> /etc/resolv.conf #set localhost as the DNS resolver
-chattr +i /etc/resolv.conf #disallow the modification of the file
+# set to use local DNS resolver
+chattr -i /etc/resolv.conf # allow the modification of the file
+sed -i 's|nameserver|#nameserver|' /etc/resolv.conf # disable previous DNS servers
+echo "nameserver 127.0.0.1" >> /etc/resolv.conf # set localhost as the DNS resolver
+chattr +i /etc/resolv.conf # disallow the modification of the file
 
-#start local DNS resolver
+# start local DNS resolver
 systemctl start unbound.service
