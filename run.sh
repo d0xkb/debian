@@ -8,9 +8,15 @@ set -o pipefail
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PACKAGES="vim curl htop iftop iptraf tcpdump iotop ccze unzip apt-transport-https"
 
+# initial OS check
+if [[ ! -f "/etc/debian_version" ]]; then
+  echo "This installer only works on Debian" 1>&2
+  exit 1
+fi
+
 # initial root check
 if [[ "$EUID" -ne 0 ]]; then
-	echo "Run this script as root." 1>&2
+	echo "Run this script as root" 1>&2
 	exit 1
 fi
 
