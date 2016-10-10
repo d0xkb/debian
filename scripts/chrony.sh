@@ -3,7 +3,7 @@
 
 # install chrony if necessary
 if [[ $(which chronyd) != /usr/sbin/chronyd ]]; then
-   apt-get -y install chrony
+  apt-get -y install chrony
 fi
 
 # disable systemd ntp and standartize on UTC timezone

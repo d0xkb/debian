@@ -16,8 +16,8 @@ fi
 
 # initial root check
 if [[ "$EUID" -ne 0 ]]; then
-	echo "Run this script as root" 1>&2
-	exit 1
+  echo "Run this script as root" 1>&2
+  exit 1
 fi
 
 # locale setup
