@@ -10,7 +10,7 @@ fi
 timedatectl set-ntp false
 timedatectl set-timezone UTC
 
-# check link to localtime
+# check link to localtime and fix if needed
 if [[ $(readlink -f /etc/localtime) != /usr/share/zoneinfo/UTC ]]; then
   rm -f /etc/localtime
   ln -s /usr/share/zoneinfo/UTC /etc/localtime
