@@ -34,20 +34,19 @@ apt-get -y dist-upgrade
 apt-get -y install $PACKAGES
 
 # .bashrc setup
-cp -p $DIR/scripts/.bashrc ~/.bashrc
-source ~/.bashrc
+cp -p $DIR/scripts/.bashrc /root/.bashrc
 
 # chrony setup
-bash $DIR/scripts/chrony.sh
+. $DIR/scripts/chrony.sh
 
 # tor setup
-bash $DIR/scripts/tor.sh
+. $DIR/scripts/tor.sh
 
 # iptables setup
-bash $DIR/scripts/iptables.sh
+. $DIR/scripts/iptables.sh
 
 # unbound setup
-bash $DIR/scripts/unbound.sh
+. $DIR/scripts/unbound.sh
 
 # change from graphical.target (default) to multi-user.target
 if [[ $(systemctl get-default) != multi-user.target ]]; then
