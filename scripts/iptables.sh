@@ -57,8 +57,8 @@ iptables -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
 # reject all other ICMP types
 iptables -A INPUT -p icmp -j REJECT
 
-# log iptables denied calls
-iptables -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+# log iptables denied calls (uncomment for enable)
+#iptables -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
 
 # reject anything not allowed above
 iptables -A INPUT -j REJECT
