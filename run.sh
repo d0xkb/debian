@@ -59,7 +59,6 @@ apt-get -y autoremove
 
 # some folder deletions
 [ -d "/var/log/puppetlabs/" ] && rm -rf /var/log/puppetlabs/
-[ -d "unattended-upgrades/" ] && rm -rf /unattended-upgrades/
 [ -f "/var/log/alternatives.log" ] && rm -f /var/log/alternatives.log
 [ -f "/var/log/bootstrap.log" ] && rm -f /var/log/bootstrap.log
 
