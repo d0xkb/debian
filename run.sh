@@ -48,6 +48,9 @@ cp -p $DIR/scripts/.bashrc /root/.bashrc
 # unbound setup
 . $DIR/scripts/unbound.sh
 
+# ssh setup
+. $DIR/scripts/ssh.sh
+
 # change from graphical.target (default) to multi-user.target
 if [[ $(systemctl get-default) != multi-user.target ]]; then
   systemctl set-default multi-user.target
