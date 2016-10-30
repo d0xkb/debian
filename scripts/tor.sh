@@ -26,10 +26,9 @@ cat > /etc/tor/torrc <<EOF
 ORPort 9001
 DirPort 9030
 SafeLogging relay
-RelayBandwidthRate 2048 KBytes
-RelayBandwidthBurst 2048 KBytes
-PublishServerDescriptor 0 #comment this line when ready
-#Nickname ididnteditheconfig
-#ContactInfo 0xFFFFFFFF Random Person <nobody AT example dot com>
+RelayBandwidthRate 16384 KBytes
+RelayBandwidthBurst 32768 KBytes
+Nickname d0xkb
+ContactInfo d0xkb <d0xkb@protonmail.ch>
 ExitPolicy reject *:*
 EOF
