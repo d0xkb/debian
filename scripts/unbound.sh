@@ -34,7 +34,7 @@ EOF
 
 # set to use local DNS resolver
 chattr -i /etc/resolv.conf # allow the modification of the file
-sed -i 's|nameserver|#nameserver|' /etc/resolv.conf # disable previous DNS servers
+sed -i 's/nameserver/#nameserver/g' /etc/resolv.conf # disable previous DNS servers
 echo "nameserver 127.0.0.1" >> /etc/resolv.conf # set localhost as the DNS resolver
 chattr +i /etc/resolv.conf # disallow the modification of the file
 
