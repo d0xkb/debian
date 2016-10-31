@@ -15,7 +15,7 @@ if [[ $(stat -c %a "$key") != $perm ]]; then
 fi
 
 # disable password authentification and restart ssh service
-if [[ $(sshd -T |grep passwordauth |awk '{print $2}') != no ]]; then
+if [[ $(sshd -T |grep passwordauth |awk '{print $2}') != "no" ]]; then
   sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
   systemctl restart ssh.service
 fi
