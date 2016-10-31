@@ -52,8 +52,14 @@ cp -p $DIR/scripts/.bashrc /root/.bashrc
 . $DIR/scripts/ssh.sh
 
 # change from graphical.target (default) to multi-user.target
-if [[ $(systemctl get-default) != multi-user.target ]]; then
+if [[ $(systemctl get-default) != "multi-user.target" ]]; then
   systemctl set-default multi-user.target
+fi
+
+# disable TCP metrics
+if [[ $(cat /proc/sys/net/ipv4/tcp_no_metrics_save) != "1" ]]; then
+  echo "net.ipv4.tcp_no_metrics_save = 1" >> /etc/sysctl.conf
+  sysctl -p
 fi
 
 # cleaning via apt
