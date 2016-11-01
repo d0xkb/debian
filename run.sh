@@ -62,6 +62,9 @@ if [[ $(cat /proc/sys/net/ipv4/tcp_no_metrics_save) != "1" ]]; then
   sysctl -p
 fi
 
+# Fix dmesg "intel_rapl: no valid rapl domains found in package 0"
+echo "blacklist intel_rapl" > /etc/modprobe.d/intel_rapl.conf
+
 # cleaning via apt
 apt-get autoclean
 apt-get -y autoremove
