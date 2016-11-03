@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# create ssh path if needed
+[ -d "/root/.ssh/" ] || mkdir -p /root/.ssh/
+chmod 700 /root/.ssh
+
 # set variables
 key="/root/.ssh/authorized_keys"
-perm="600"
 
 # install ssh key and set permissions
 cat > $key <<EOF
@@ -10,8 +13,8 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO273ebwYHLk/mhuXeNIqCtef3xa1iznD+EU81tjZJys
 EOF
 
 # check ssh key permissions and correct them if needed
-if [[ $(stat -c %a "$key") != $perm ]]; then
-  chmod $perm $key
+if [[ $(stat -c %a "$key") != "600" ]]; then
+  chmod 600 $key
 fi
 
 # disable password authentification and restart ssh service
