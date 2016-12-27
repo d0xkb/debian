@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # install unbound if necessary
-if [[ $(which unbound) != /usr/sbin/unbound ]]; then
-  apt-get -y install unbound
-fi
+command -v unbound >/dev/null 2>&1 || apt-get -y install unbound
 
 # stop tor right after installation and enable after reboot
 systemctl stop unbound.service && sleep 5

@@ -2,9 +2,7 @@
 # documentation: https://chrony.tuxfamily.org/manual.html
 
 # install chrony if necessary
-if [[ $(which chronyd) != "/usr/sbin/chronyd" ]]; then
-  apt-get -y install chrony
-fi
+command -v chronyd >/dev/null 2>&1 || apt-get -y install chrony
 
 # disable systemd ntp and standartize on UTC timezone
 timedatectl set-ntp false
