@@ -6,7 +6,6 @@ this is personalized post-installation script for setting up Debian 8 (Jessie) h
 Usage
 -----
 ````
-apt-get update && apt-get -y install unzip
 wget https://github.com/d0xkb/debian/archive/master.zip
 unzip master.zip && cd debian-master
 bash run.sh

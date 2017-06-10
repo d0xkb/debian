@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# generate host key for all key types
+ssh-keygen -A
+
 # create ssh path if needed
 [ -d "/root/.ssh/" ] || mkdir -p /root/.ssh/
 chmod 700 /root/.ssh
