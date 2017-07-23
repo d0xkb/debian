@@ -6,6 +6,7 @@ this is personalized post-installation script for setting up Debian 8 (Jessie) h
 Usage
 -----
 ````
+cd $(mktemp -d)
 wget https://github.com/d0xkb/debian/archive/master.zip
 unzip master.zip && cd debian-master
 bash run.sh
